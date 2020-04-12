@@ -14,6 +14,10 @@ const routes: Routes = [
     component: ErrorsComponent
   },
   {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
     path: '',
     redirectTo: 'events',
     pathMatch: 'full',
