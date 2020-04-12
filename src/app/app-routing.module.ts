@@ -1,23 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { EventsComponent } from './events/containers/events/events.component';
-import { EventDetailsComponent } from './events/components/event-details/event-details.component';
-import { EventCreateComponent } from './events/components/event-create/event-create.component';
+import { ErrorsComponent } from './shared/components/errors/errors.component';
 
 
 const routes: Routes = [
   {
     path: 'events',
-    component: EventsComponent
+    loadChildren: () => import('./events/events.module').then(m => m.EventsModule)
   },
   {
-    path: 'events/new',
-    component: EventCreateComponent
-  },
-  {
-    path: 'events/:id',
-    component: EventDetailsComponent
+    path: '404',
+    component: ErrorsComponent
   },
   {
     path: '',
@@ -27,7 +21,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

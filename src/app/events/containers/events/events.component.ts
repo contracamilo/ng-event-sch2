@@ -1,20 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-import { EventsService } from "src/app/core/services/event/events.service";
-import { ToastrService } from "src/app/core/services/toastr/toastr.service";
+import { Component, OnInit } from '@angular/core';
+import { EventsService } from 'src/app/core/services/event/events.service';
+import { ToastrService } from 'src/app/core/services/toastr/toastr.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-events",
-  templateUrl: "./events.component.html",
+  selector: 'app-events',
+  templateUrl: './events.component.html',
 })
 export class EventsComponent implements OnInit {
-  events: any[];
+  events: any;
   constructor(
     private eventsService: EventsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.events = this.eventsService.getEvents();
+    /*
+    this.eventsService.getEvents().subscribe(events => {
+      this.events = events;
+    });*/
+    console.log(this.route.snapshot.data.events);
+    this.events = this.route.snapshot.data.events;
   }
 
   handleThumbnailClick(eventName: string) {
