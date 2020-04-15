@@ -17,12 +17,12 @@ import { CoreModule } from '../core/core.module';
     EventDetailsComponent,
     EventCreateComponent,
   ],
+  exports: [EventThumbnailComponent, EventsComponent, EventDetailsComponent, EventCreateComponent],
+  imports: [CommonModule, SharedModule, CoreModule, EventsRoutingModule],
   providers: [
     RouteGuard,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}
   ],
-  exports: [EventThumbnailComponent, EventsComponent, EventDetailsComponent, EventCreateComponent],
-  imports: [CommonModule, SharedModule, CoreModule, EventsRoutingModule],
 })
 export class EventsModule {}
 

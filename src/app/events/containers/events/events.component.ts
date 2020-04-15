@@ -21,7 +21,6 @@ export class EventsComponent implements OnInit {
     this.eventsService.getEvents().subscribe(events => {
       this.events = events;
     });*/
-    console.log(this.route.snapshot.data.events);
     this.events = this.route.snapshot.data.events;
   }
 

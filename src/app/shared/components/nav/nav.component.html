@@ -25,7 +25,9 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a [routerLink]="['/user/profile']" >Welcome John</a>
+            <a *ngIf="!isLoged()" [routerLink]="['/user/login']" >Login</a>
+            <a *ngIf="isLoged()"[routerLink]="['/user/profile']" >Welcome {{ userName }}</a>
+            <a *ngIf="isLoged()" (click)="logOut()" >Logout</a>
           </li>
         </ul>
       </div>

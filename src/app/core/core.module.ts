@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EventsService } from './services/event/events.service';
 import { ToastrService } from './services/toastr/toastr.service';
 import { EventListResolverService } from './services/event-list-resolver/event-list-resolver.service';
+import { AuthService } from './services/auth/auth.service';
 
 
 
@@ -15,7 +16,8 @@ import { EventListResolverService } from './services/event-list-resolver/event-l
   providers: [
     EventsService,
     ToastrService,
-    EventListResolverService
+    EventListResolverService,
+    AuthService
   ]
 })
 export class CoreModule { }
